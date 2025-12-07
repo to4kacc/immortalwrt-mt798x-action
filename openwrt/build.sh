@@ -75,7 +75,7 @@ echo -e "\r\n${GREEN_COLOR}Building $platform${RES}\r\n"
 case "$platform" in
     cetron-ct3003)
         echo -e "${GREEN_COLOR}Model: Cetron CT3003 (U-Boot mod)${RES}"
-        model="ct3003-ubootmod"
+        model="ct3003"
         ;;
     cmcc-a10)
         echo -e "${GREEN_COLOR}Model: CMCC A10 (U-Boot mod)${RES}"
@@ -212,35 +212,50 @@ find feeds -type f -name "*.orig" -exec rm -f {} \;
 rm -f 0*-*.sh 10-custom.sh
 
 # Load devices Config
-if [ "$platform" = "cetron-ct3003" ]; then
-    curl -s $mirror/openwrt/24-config-musl-ct3003 > .config
-elif [ "$platform" = "cmcc-a10" ]; then
-    curl -s $mirror/openwrt/24-config-musl-a10 > .config
-elif [ "$platform" = "umi-uax3000e" ]; then
-    curl -s $mirror/openwrt/24-config-musl-uax3000e > .config    
-elif [ "$platform" = "h3c-magic-nx30-pro" ]; then
-    curl -s $mirror/openwrt/24-config-musl-nx30-pro > .config
-elif [ "$platform" = "imou-lc-hx3001" ]; then
-    curl -s $mirror/openwrt/24-config-musl-hx3001 > .config
-elif [ "$platform" = "nokia-ea0326gmp" ]; then
-    curl -s $mirror/openwrt/24-config-musl-ea0326gmp > .config
-elif [ "$platform" = "qihoo-360t7" ]; then
-    curl -s $mirror/openwrt/24-config-musl-360t7 > .config
-elif [ "$platform" = "newland-nl-wr8103" ]; then
-    curl -s $mirror/openwrt/24-config-musl-nl-wr8103 > .config
-elif [ "$platform" = "clx-s20p" ]; then
-    curl -s $mirror/openwrt/24-config-musl-s20p > .config
-elif [ "$platform" = "netcore-n60-pro" ]; then
-    curl -s $mirror/openwrt/24-config-musl-n60pro > .config
-elif [ "$platform" = "netcore-n60-pro-512rom" ]; then
-    curl -s $mirror/openwrt/24-config-musl-n60pro-512rom > .config
-elif [ "$platform" = "xiaomi-redmi-router-ax6000" ]; then
-    curl -s $mirror/openwrt/24-config-musl-redmi-ax6000 > .config
-elif [ "$platform" = "xiaomi-redmi-router-ax6000-512rom" ]; then
-    curl -s $mirror/openwrt/24-config-musl-redmi-ax6000-512rom > .config
-else
-    curl -s $mirror/openwrt/24-config-musl-re-cp-03 > .config
-fi
+case "$platform" in
+    cetron-ct3003)
+        curl -s $mirror/openwrt/24-config-musl-ct3003 > .config
+        ;;
+    cmcc-a10)
+        curl -s $mirror/openwrt/24-config-musl-a10 > .config
+        ;;
+    umi-uax3000e)
+        curl -s $mirror/openwrt/24-config-musl-uax3000e > .config
+        ;;
+    h3c-magic-nx30-pro)
+        curl -s $mirror/openwrt/24-config-musl-nx30-pro > .config
+        ;;
+    imou-lc-hx3001)
+        curl -s $mirror/openwrt/24-config-musl-hx3001 > .config
+        ;;
+    nokia-ea0326gmp)
+        curl -s $mirror/openwrt/24-config-musl-ea0326gmp > .config
+        ;;
+    qihoo-360t7)
+        curl -s $mirror/openwrt/24-config-musl-360t7 > .config
+        ;;
+    newland-nl-wr8103)
+        curl -s $mirror/openwrt/24-config-musl-nl-wr8103 > .config
+        ;;
+    clx-s20p)
+        curl -s $mirror/openwrt/24-config-musl-s20p > .config
+        ;;
+    netcore-n60-pro)
+        curl -s $mirror/openwrt/24-config-musl-n60pro > .config
+        ;;
+    netcore-n60-pro-512rom)
+        curl -s $mirror/openwrt/24-config-musl-n60pro-512rom > .config
+        ;;
+    xiaomi-redmi-router-ax6000)
+        curl -s $mirror/openwrt/24-config-musl-redmi-ax6000 > .config
+        ;;
+    xiaomi-redmi-router-ax6000-512rom)
+        curl -s $mirror/openwrt/24-config-musl-redmi-ax6000-512rom > .config
+        ;;
+    jdcloud-re-cp-03)
+        curl -s $mirror/openwrt/24-config-musl-re-cp-03 > .config
+        ;;
+esac
 
 # config-common
 case "$platform" in
