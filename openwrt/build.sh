@@ -212,9 +212,9 @@ find feeds -type f -name "*.orig" -exec rm -f {} \;
 rm -f 0*-*.sh 10-custom.sh
 
 # Load devices Config
-if [ "$platform" = "cetron-ct3003-ubootmod" ]; then
+if [ "$platform" = "cetron-ct3003" ]; then
     curl -s $mirror/openwrt/24-config-musl-ct3003 > .config
-elif [ "$platform" = "cmcc-a10-ubootmod" ]; then
+elif [ "$platform" = "cmcc-a10" ]; then
     curl -s $mirror/openwrt/24-config-musl-a10 > .config
 elif [ "$platform" = "umi-uax3000e" ]; then
     curl -s $mirror/openwrt/24-config-musl-uax3000e > .config    
